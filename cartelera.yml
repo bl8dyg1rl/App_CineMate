@@ -1,0 +1,24 @@
+name: Actualizar cartelera
+on:
+  schedule:
+    - cron: "0 11 * * 4"   # cada jueves, 11:00 UTC (6:00 am en Bogotá)
+  workflow_dispatch:        # botón para correrlo a mano cuando quieras
+permissions:
+  contents: write
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node actualizar-cartelera.mjs
+        env:
+          TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
+      - name: Guardar cambios
+        run: |
+          git config user.name "cartelera-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/peliculas.json
+          git diff --cached --quiet || (git commit -m "Actualizar cartelera" && git push)

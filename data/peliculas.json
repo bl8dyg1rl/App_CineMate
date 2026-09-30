@@ -1,0 +1,90 @@
+{
+  "actualizado": "2026-09-30T19:21:02.210Z",
+  "region": "CO",
+  "peliculas": [
+    {
+      "id": 1423191,
+      "titulo": "Resident Evil",
+      "sinopsis": "Película basada en la saga de videojuegos de Capcom del mismo nombre. En una reinvención totalmente nueva, el mensajero médico Bryan se ve inmerso en una carrera de acción sin descanso por la supervivencia, mientras el caos se desata a su alrededor.",
+      "estreno": "2026-09-17",
+      "poster": "https://image.tmdb.org/t/p/w342/3d8D5tZXiPUE2VmRjnrTNzFORBa.jpg"
+    },
+    {
+      "id": 1204680,
+      "titulo": "Coyote vs. Acme",
+      "sinopsis": "Después de que todos los productos fabricados por ACME Corporation le salgan mal a Wile E. Coyote, en su persecución del Correcaminos, contrata a un abogado humano igualmente desafortunado para demandar a la empresa. Cuando el abogado de Wile E. descubre que el intimidante jefe de su antiguo bufete es el director general de ACME, se une a Wile E. para ganar el juicio contra él.",
+      "estreno": "2026-08-27",
+      "poster": "https://image.tmdb.org/t/p/w342/vWFz9spZFBkJvForuYrKK2ntOLB.jpg"
+    },
+    {
+      "id": 1288445,
+      "titulo": "El motín",
+      "sinopsis": "Después de que su jefe, un industrial multimillonario, sea asesinado delante de él, Cole Reed se ve obligado a cargar con la culpa del crimen, lo que le obliga a huir mientras trabaja para descubrir una conspiración internacional.",
+      "estreno": "2026-09-10",
+      "poster": "https://image.tmdb.org/t/p/w342/5zmLk7K4wHWG68OlniFzrNrZjJE.jpg"
+    },
+    {
+      "id": 1263337,
+      "titulo": "En el corazón de la bestia",
+      "sinopsis": "Tras sobrevivir a un brutal accidente aéreo, el oficial de las Fuerzas Especiales James Belmont y su perro de combate Odín intentan intentarán regresar a la civilización desde un remoto lugar en medio de los parajes salvajes de Alaska.",
+      "estreno": "2026-09-24",
+      "poster": "https://image.tmdb.org/t/p/w342/h9Ql2vsltCOuf44c28nInxjzL2m.jpg"
+    },
+    {
+      "id": 1248832,
+      "titulo": "Digger",
+      "sinopsis": "El hombre más poderoso del mundo se embarca en una misión frenética para demostrar que es el salvador de la humanidad antes de que el desastre que ha desencadenado lo destruya todo.",
+      "estreno": "2026-10-01",
+      "poster": "https://image.tmdb.org/t/p/w342/koqE0V2IgIPVy5o2vVkoGJvnB8b.jpg"
+    },
+    {
+      "id": 1477712,
+      "titulo": "Dulce sabor a muerte",
+      "sinopsis": "Lo que comienza siendo un verano idílico, en un pequeño y tranquilo pueblo vacacional, se convierte en una auténtica pesadilla cuando los más pequeños comienzan a mostrar instintos asesinos y deseos insaciables por acabar con todos los adultos. Son víctimas de una curiosa maldición provocada por los helados que comen que afecta a todos, menos a tres niños que tendrán que intentar escapar y salvar a todo el pueblo.",
+      "estreno": "2026-09-03",
+      "poster": "https://image.tmdb.org/t/p/w342/uVuP2ZTYLn5hdL1aUOe4BiFD6d3.jpg"
+    },
+    {
+      "id": 299534,
+      "titulo": "Vengadores: Endgame",
+      "sinopsis": "Tras el chasquido de Thanos que eliminó a la mitad de la vida en el universo, los Vengadores supervivientes quedan devastados y divididos. Cinco años después, una inesperada oportunidad les permite intentar revertir la catástrofe. Reuniéndose una vez más, los héroes emprenden una misión extrema que los obliga a viajar al pasado, enfrentarse a sus propias pérdidas y hacer sacrificios definitivos para restaurar el equilibrio del universo.",
+      "estreno": "2019-04-25",
+      "poster": "https://image.tmdb.org/t/p/w342/br6krBFpaYmCSglLBWRuhui7tPc.jpg"
+    },
+    {
+      "id": 1465063,
+      "titulo": "La isla olvidada",
+      "sinopsis": "Dos amigas se quedan varadas en el místico mundo de Nakali, donde su único escape podría costarles su vida compartida de recuerdos.",
+      "estreno": "2026-09-24",
+      "poster": "https://image.tmdb.org/t/p/w342/vpTdXFoZGzwnCWzkVYU7JH8teAZ.jpg"
+    },
+    {
+      "id": 671,
+      "titulo": "Harry Potter y la piedra filosofal",
+      "sinopsis": "Harry Potter es un huérfano que vive con sus desagradables tíos, los Dursley, y su repelente primo Dudley. Se acerca su undécimo cumpleaños y tiene pocas esperanzas de recibir algún regalo, ya que nunca nadie se acuerda de él. Sin embargo, pocos días antes de su cumpleaños, una serie de misteriosas cartas dirigidas a él y escritas con una estridente tinta verde rompen la monotonía de su vida: Harry es un mago y sus padres también lo eran.",
+      "estreno": "2001-11-30",
+      "poster": "https://image.tmdb.org/t/p/w342/3MKK7vAJLtSkBTABMTjxf6TOCo3.jpg"
+    },
+    {
+      "id": 1302904,
+      "titulo": "Prácticamente magia 2",
+      "sinopsis": "Las hermanas Owens deben enfrentarse a la oscura maldición que amenaza con desintegrar a su familia de una vez por todas.",
+      "estreno": "2026-09-10",
+      "poster": "https://image.tmdb.org/t/p/w342/cQjtzBXcTMzHqvo7zmpJvcBFRdC.jpg"
+    },
+    {
+      "id": 1127384,
+      "titulo": "En mar abierto",
+      "sinopsis": "Un avión comercial en ruta de Los Ángeles a Shanghai se ve obligado a realizar un aterrizaje de emergencia en aguas infestadas de tiburones.",
+      "estreno": "2026-08-27",
+      "poster": "https://image.tmdb.org/t/p/w342/6hlW7llzDIh4rBIGvtdGoIFsawg.jpg"
+    },
+    {
+      "id": 1341138,
+      "titulo": "Relajadas y muy peligrosas",
+      "sinopsis": "Tres amigas se van a pasar el fin de semana a un spa, pero la estancia se convierte en un caos cuando se les une otra amiga, muy juerguista.",
+      "estreno": "2026-09-10",
+      "poster": "https://image.tmdb.org/t/p/w342/5iuGOFh2qRChIKEwdyLiyhIRQv3.jpg"
+    }
+  ]
+}

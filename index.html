@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Butaca Libre</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#f3ecf7;--surf:#fff;--ink:#2b1138;--mute:#6f5a7c;--acc:#c2410c;--accink:#fff;--ok:#0f766e;--line:#d9c9e3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#22102d;--surf:#34184a;--ink:#f7ebd0;--mute:#b9a2c9;--acc:#ffb84d;--accink:#2b1138;--ok:#5fd1b0;--line:#55306f}}
+:root[data-theme="dark"]{--bg:#22102d;--surf:#34184a;--ink:#f7ebd0;--mute:#b9a2c9;--acc:#ffb84d;--accink:#2b1138;--ok:#5fd1b0;--line:#55306f}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;max-width:480px;margin-inline:auto;min-height:100vh;padding-bottom:84px}
+header{padding:20px 18px 6px}h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-.02em}
+header p{margin:4px 0 0;color:var(--mute);font-size:15px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 18px}
+.chip{flex:none;border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.list{padding:4px 18px;display:grid;gap:16px}
+.ticket{display:grid;grid-template-columns:1fr 92px;background:var(--surf);border-radius:14px;position:relative;overflow:hidden;border:1px solid var(--line)}
+.main{padding:16px}.stub{padding:16px 10px;border-left:2px dashed var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}
+.ticket:before,.ticket:after{content:"";position:absolute;right:81px;width:22px;height:22px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+.ticket:before{top:-12px}.ticket:after{bottom:-12px}
+.movie{font-size:19px;font-weight:800;line-height:1.15;margin:0 0 6px}
+.meta{font-size:14px;color:var(--mute);margin:2px 0}
+.host{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px}
+.av{width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--accink);display:grid;place-items:center;font-weight:800;font-size:13px}
+.note{font-size:14px;margin:8px 0 0}
+.seats{display:grid;grid-template-columns:repeat(3,14px);gap:5px}
+.seat{width:14px;height:14px;border-radius:4px 4px 2px 2px;border:1.5px solid var(--mute)}.seat.on{background:var(--ok);border-color:var(--ok)}
+.left{font-size:12px;color:var(--mute)}
+.btn{border:0;border-radius:10px;background:var(--acc);color:var(--accink);font:inherit;font-weight:600;font-size:14px;padding:9px 12px;cursor:pointer;width:100%}
+.btn.out{background:transparent;color:var(--ink);border:1.5px solid var(--line)}.btn:disabled{opacity:.5}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+form{padding:8px 18px;display:grid;gap:14px}label{display:grid;gap:6px;font-size:14px;font-weight:600}
+input,select,textarea{font:inherit;font-weight:400;padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surf);color:var(--ink);width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.empty{padding:28px 18px;color:var(--mute);text-align:center}
+nav button{font-size:12px}
+.av{cursor:pointer;border:0;font:inherit}.who{background:none;border:0;padding:0;color:inherit;font:inherit;display:flex;align-items:center;gap:8px;cursor:pointer;text-align:left}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.tag{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 9px;color:var(--mute)}
+dialog{border:0;border-radius:20px 20px 0 0;padding:0;width:100%;max-width:480px;margin:auto auto 0;background:var(--surf);color:var(--ink)}
+dialog::backdrop{background:rgba(20,5,30,.6)}.sheet{padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.big{width:72px;height:72px;font-size:30px}.qa{background:var(--bg);border-radius:12px;padding:12px 14px;margin-top:14px}.qa b{display:block;font-size:13px;color:var(--mute);font-weight:600;margin-bottom:4px}
+.poster{float:right;width:48px;border-radius:6px;margin:0 0 6px 10px}.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;border-radius:14px}.strip img{flex:none;width:100%;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:center;border-radius:14px}
+.vb{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--ok);color:var(--surf);font-size:11px;margin-left:4px}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.th{position:relative;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--bg);border:1.5px dashed var(--line)}.th img{width:100%;height:100%;object-fit:cover}
+.th button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);cursor:pointer}
+.add{display:grid;place-items:center;text-align:center;font-size:13px;color:var(--mute);cursor:pointer}.box{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}.box b{display:block;margin-bottom:4px}
+nav{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin-inline:auto;display:grid;grid-template-columns:repeat(4,1fr);background:var(--surf);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{background:none;border:0;color:var(--mute);font:inherit;font-size:13px;padding:10px 4px;cursor:pointer;border-radius:10px}
+nav button[aria-selected=true]{color:var(--ink);font-weight:800;box-shadow:inset 0 -3px 0 var(--acc)}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-size:14px}
+.sample{margin:0 18px 8px;font-size:12px;color:var(--mute)}
+[hidden]{display:none!important}
+.avb{background:none;border:0;padding:0;cursor:pointer;border-radius:50%}
+.gal{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scroll-snap-type:x mandatory}.gal img{flex:none;height:150px;aspect-ratio:4/5;object-fit:cover;border-radius:10px;scroll-snap-align:start}
+.dd{border:1.5px solid var(--line);border-radius:10px;background:var(--surf)}.dd summary{padding:11px 12px;cursor:pointer;font-weight:400}.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 12px 12px}.opts label{font-weight:400;display:flex;gap:8px;align-items:center}.opts input{width:auto}
+.chat{padding:8px 18px;display:grid;gap:8px}.msg{max-width:80%;padding:9px 12px;border-radius:14px;background:var(--surf);border:1px solid var(--line);font-size:14px}.msg.me{justify-self:end;background:var(--acc);color:var(--accink);border-color:transparent}.msg small{display:block;opacity:.7;font-size:11px}
+.cbar{display:flex;padding:8px 18px}.cbar input{flex:1}.cbar .btn{width:auto}
+.mem{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;font-size:13px}.mem span{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:3px 4px 3px 10px}.mem button{border:0;background:var(--line);color:var(--ink);border-radius:99px;font-size:12px;padding:3px 8px;cursor:pointer}
+</style>
+</head>
+<body>
+<header><h1>Butaca Libre</h1><p>Encuentra quién te acompaña al cine.</p></header>
+<div id="app"></div>
+<nav id="nav" role="tablist" hidden>
+<button role="tab" data-t="feed">Planes</button><button role="tab" data-t="new">Crear plan</button><button role="tab" data-t="mine">Mis planes</button><button role="tab" data-t="me">Mi perfil</button>
+</nav>
+<dialog id="dlg"></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// Dirección del edificio y llave PÚBLICA (anon/publishable). NUNCA pegues aquí la service_role ni la secret.
+const SUPABASE_URL="https://zjhxgktblwvfssibkxqf.supabase.co";
+const SUPABASE_KEY="sb_publishable_56nF3N2qUCOTXbCCUBDz9A_0aXd5uT3";
+const GEN=["Acción","Aventura","Animación","Ciencia ficción","Comedia","Crimen","Documental","Drama","Familiar","Fantasía","Misterio","Romance","Terror","Thriller"];
+const SALAS=["Sala tradicional","3D","4D (con movimiento)","IMAX","VIP / Premium","Me da igual"];
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let db,user=null,me=null,plans=[],est={},bl=[],names={},msgs=[],posters={},live=false,movies=["La Última Función","Noche en el Altiplano","Orquesta de Fuego","El Faro Sin Luz"];
+let tab="feed",filter="Todas",mode="up",err="",toast="",chatId=null,timer=null;
+const fmt=w=>new Date(w).toLocaleString("es",{weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit"});
+const vb=h=>h&&h.verificacion==="verificado"?`<span class="vb" title="Perfil verificado" aria-label="Perfil verificado">✓</span>`:"";
+const av=h=>`<span class="av" style="background:var(--acc)">${esc((h.nombre||"?")[0])}</span>`;
+const dlg=h=>{$("#dlg").innerHTML=h;if(!$("#dlg").open)$("#dlg").showModal()};
+function say(t){toast=t;render();setTimeout(()=>{toast="";render()},2500)}
+// Ejecuta una orden al servidor; si falla avisa, si sale bien refresca los datos.
+async function run(q,ok){const{error}=await q;if(error){say("Error: "+error.message);return false}if(ok)say(ok);await refresh();return true}
+
+// ---- Cartelera (archivo que deja el script semanal) ----
+async function loadMovies(){try{const r=await fetch("data/peliculas.json",{cache:"no-store"});if(!r.ok)throw 0;const l=(await r.json()).peliculas||[];if(!l.length)throw 0;movies=l.map(m=>m.titulo);posters=Object.fromEntries(l.map(m=>[m.titulo,m.poster]));live=true}catch(e){}render()}
+
+// ---- Cuentas (la portería) y perfil ----
+async function signup(d){const{data,error}=await db.auth.signUp({email:d.email,password:d.pw,options:{data:{nombre:d.name.trim(),edad:+d.age}}});if(error)return err=error.message;if(!data.session)err="Cuenta creada. Revisa tu correo para confirmarla y luego entra."}
+async function login(d){const{error}=await db.auth.signInWithPassword({email:d.email,password:d.pw});if(error)err=error.message}
+async function cargarPerfil(){let{data,error}=await db.from("perfiles").select("*").eq("id",user.id).maybeSingle();if(error){err="No pude leer el perfil: "+error.message;return null}
+if(!data){const m=user.user_metadata||{},r=await db.from("perfiles").insert({id:user.id,nombre:m.nombre||"Sin nombre",edad:+m.edad||18}).select().single();if(r.error){err="No pude crear el perfil: "+r.error.message;return null}data=r.data}return data}
+async function onSession(s){user=s?s.user:null;me=null;plans=[];chatId=null;clearInterval(timer);if(user){me=await cargarPerfil();if(me)await refresh()}render()}
+
+// ---- Datos compartidos: planes, participación, bloqueos ----
+async function refresh(){
+const[a,b,c]=await Promise.all([db.from("planes").select("*,host:perfiles!planes_anfitrion_fkey(id,nombre,edad,bio,gustos,pregunta,respuesta,verificacion)").order("fecha_hora"),db.from("participantes").select("plan,estado").eq("persona",user.id),db.from("bloqueos").select("bloqueado")]);
+if(a.error)return say("Error: "+a.error.message);
+plans=a.data;est=Object.fromEntries((b.data||[]).map(x=>[x.plan,x.estado]));bl=(c.data||[]).map(x=>x.bloqueado);
+const r=await Promise.all(plans.map(p=>db.rpc("cupos_libres",{p:p.id})));plans.forEach((p,i)=>p.libres=r[i].data??0);render()}
+
+// ---- Pantallas ----
+function ticket(p){const host=p.anfitrion===user.id,e=est[p.id],inn=host||e==="dentro",n=p.cupos_total-1-p.libres,h=p.host||{nombre:"Usuario",gustos:[]};let s="";for(let i=0;i<p.cupos_total;i++)s+=`<span class="seat${i<=n?" on":""}"></span>`;
+let b;if(inn)b=(n>0&&p.libres>0?`<button class="btn" data-chat="${p.id}">Chat</button>`:`<span class="left">${p.libres<=0?"Plan completo":"Chat cuando alguien se una"}</span>`)+(host?`<button class="btn out" data-del="${p.id}">Cancelar</button>`:`<button class="btn out" data-leave="${p.id}">Salir</button>`);
+else if(e==="sacada")b=`<span class="left">No disponible</span>`;else b=p.libres<=0?`<button class="btn out" disabled>Lleno</button>`:`<button class="btn" data-join="${p.id}">${e==="salio"?"Volver":"Unirme"}</button>`;
+return `<article class="ticket"><div class="main">${posters[p.pelicula]?`<img class="poster" src="${esc(posters[p.pelicula])}" alt="">`:""}<h2 class="movie">${esc(p.pelicula)}</h2><p class="meta">${esc(p.cine)}, ${esc(p.lugar)} · ${esc(p.sala)}</p><p class="meta">${esc(fmt(p.fecha_hora))}</p><p class="note">${esc(p.nota)}</p><div class="host">${av(h)}<button class="who" data-hp="${p.id}">${esc(h.nombre)}${h.edad?", "+esc(h.edad):""}${vb(h)}</button></div><div class="tags">${(h.gustos||[]).slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>${host?`<div class="mem"><button data-mgr="${p.id}">Gestionar participantes (${n})</button></div>`:""}</div><div class="stub"><div class="seats" aria-hidden="true">${s}</div><span class="left">${p.libres} libre${p.libres==1?"":"s"}</span>${b}</div></article>`}
+function feed(){const l=plans.filter(p=>p.anfitrion!==user.id&&est[p.id]!=="dentro"&&(filter=="Todas"||p.pelicula==filter));
+return `<div class="chips">${["Todas",...movies].map(m=>`<button class="chip" aria-pressed="${m==filter}" data-f="${esc(m)}">${esc(m)}</button>`).join("")}</div><p class="sample">${live?"Cartelera real de TMDB.":"Películas de ejemplo."}</p><div class="list">${l.length?l.map(ticket).join(""):`<p class="empty">Nadie ha publicado un plan todavía. Crea el primero.</p>`}</div><p class="sample" style="margin-top:14px">Esta app usa la API de TMDB, pero no está avalada ni certificada por TMDB.</p>`}
+function mine(){const l=plans.filter(p=>p.anfitrion===user.id||est[p.id]==="dentro");return `<div class="list" style="padding-top:14px">${l.length?l.map(ticket).join(""):`<p class="empty">Aún no tienes planes. Únete a uno o crea el tuyo.</p>`}</div>`}
+const form=()=>`<form id="nf"><label>Película<select name="movie">${movies.map(m=>`<option>${esc(m)}</option>`).join("")}</select></label><div class="row"><label>Cine<input name="cine" required placeholder="Nombre del cine"></label><label>Lugar<input name="lugar" required placeholder="Centro comercial o dirección"></label></div><label>Tipo de sala<select name="sala">${SALAS.map(m=>`<option>${m}</option>`).join("")}</select></label><div class="row"><label>Fecha y hora<input name="when" type="datetime-local" required></label><label>Personas en total (contándote)<input name="total" type="number" min="2" max="8" value="3"></label></div><label>¿Cómo quieres vivir la función?<textarea name="note" rows="2" placeholder="Ej.: charlamos después, o silencio total"></textarea></label><button class="btn" style="padding:13px">Publicar plan</button></form>`;
+function meForm(){const g=me.gustos||[];return `<form id="mf"><label>Nombre<input name="nombre" required value="${esc(me.nombre)}"></label><label>Edad<input name="edad" type="number" min="18" max="99" required value="${esc(me.edad)}"></label><details class="dd"><summary>Tus gustos (${g.length||"elige"})</summary><div class="opts">${GEN.map(x=>`<label><input type="checkbox" name="gustos" value="${x}"${g.includes(x)?" checked":""}>${x}</label>`).join("")}</div></details><label>Preséntate<textarea name="bio" rows="3">${esc(me.bio)}</textarea></label><label>Mi película de confort<input name="respuesta" value="${esc(me.respuesta)}"></label><div class="box"><b>Fotos y verificación</b>Llegan en el siguiente paso (almacenamiento de imágenes).</div>${bl.length?`<div class="box"><b>Personas bloqueadas</b>${bl.map((id,i)=>`<div class="host" style="justify-content:space-between;margin-top:8px">Persona bloqueada ${i+1}<button type="button" class="btn out" style="width:auto" data-unblock="${id}">Desbloquear</button></div>`).join("")}</div>`:""}<button class="btn" style="padding:13px">Guardar perfil</button><button type="button" class="btn out" data-out="1">Cerrar sesión</button></form>`}
+const perfilHTML=h=>`<div class="sheet">${av(h).replace('class="av"','class="av big"')}<h2 class="movie" style="font-size:24px;margin-top:10px">${esc(h.nombre)}${h.edad?", "+esc(h.edad):""}${vb(h)}</h2><p class="note">${esc(h.bio||"Aún no escribió su presentación.")}</p><div class="tags">${(h.gustos||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>${h.respuesta?`<div class="qa"><b>${esc(h.pregunta)}</b>${esc(h.respuesta)}</div>`:""}<button class="btn out" style="margin-top:16px" data-close="1">Cerrar</button></div>`;
+async function gestionar(id){const{data}=await db.from("participantes").select("persona,perfil:perfiles!participantes_persona_fkey(nombre)").eq("plan",id).eq("estado","dentro");
+(data||[]).forEach(m=>names[m.persona]=m.perfil?.nombre||"Usuario");
+dlg(`<div class="sheet"><h2 class="movie">Participantes</h2><div class="list" style="padding:10px 0">${(data||[]).map(m=>`<div class="host" style="justify-content:space-between">${esc(names[m.persona])}<button class="btn out" style="width:auto" data-kick="${id}:${m.persona}">Sacar</button></div>`).join("")||`<p class="empty">Aún no se une nadie.</p>`}</div><p class="sample" style="margin:0 0 10px">Al sacar a alguien, su cupo queda libre y no podrá volver a este plan.</p><button class="btn out" data-close="1">Cerrar</button></div>`)}
+const afterKick=(id,u)=>`<div class="sheet"><h2 class="movie" style="font-size:20px">Sacaste a ${esc(names[u]||"la persona")}</h2><p class="note">Su cupo quedó libre. ¿Quieres hacer algo más?</p><div style="display:grid;gap:8px;margin-top:14px"><button class="btn" data-block="${u}">Bloquear (no verán los planes del otro)</button><button class="btn out" data-rep="${id}:${u}">Reportar</button><button class="btn out" data-close="1">Nada más</button></div></div>`;
+const repForm=(id,u)=>`<form class="sheet" id="rf"><input type="hidden" name="b" value="${u}"><input type="hidden" name="pid" value="${id}"><h2 class="movie" style="font-size:20px">Reportar a ${esc(names[u]||"la persona")}</h2><label>Motivo<select name="why"><option>Comportamiento inapropiado</option><option>Acoso o incomodidad</option><option>Perfil falso</option><option>Otro</option></select></label><label>Detalles (opcional)<textarea name="txt" rows="3"></textarea></label><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" name="also" checked style="width:auto">Bloquear también a esta persona</label><button class="btn">Enviar reporte</button><button type="button" class="btn out" data-close="1">Cancelar</button></form>`;
+const msgsHTML=()=>msgs.map(m=>`<div class="msg${m.autor===user.id?" me":""}"><small>${esc(m.perfil?.nombre||"")}</small>${esc(m.texto)}</div>`).join("")||`<p class="empty">Rompe el hielo y acuerden dónde encontrarse.</p>`;
+const chatView=p=>`<div class="list" style="padding-top:12px"><button class="chip" data-back="1">← Volver</button><h2 class="movie" style="margin-top:10px">Chat · ${esc(p.pelicula)}</h2><p class="meta">${esc(p.cine)}, ${esc(p.lugar)} · ${esc(fmt(p.fecha_hora))}</p></div><div class="chat" id="chatlist">${msgsHTML()}</div><form class="cbar" id="cf"><input name="t" autocomplete="off" required placeholder="Escribe un mensaje" aria-label="Mensaje"><button class="btn">Enviar</button></form>`;
+async function cargarChat(){if(!chatId)return;const l=await db.rpc("cupos_libres",{p:chatId});if((l.data??0)<=0)return cerrarChat("El chat se cerró porque el plan se llenó");
+const{data}=await db.from("mensajes").select("autor,texto,perfil:perfiles!mensajes_autor_fkey(nombre)").eq("plan",chatId).order("creado");msgs=data||[];const c=$("#chatlist");if(c){c.innerHTML=msgsHTML();scrollTo(0,document.body.scrollHeight)}}
+function cerrarChat(t){chatId=null;clearInterval(timer);if(t)say(t);else render();refresh()}
+async function abrirChat(id){chatId=id;msgs=[];render();await cargarChat();timer=setInterval(cargarChat,4000)}
+const auth=()=>{const up=mode==="up";return `<form id="af"><h2 class="movie" style="font-size:22px">${up?"Crea tu cuenta":"Entra a tu cuenta"}</h2>${up?`<label>Nombre<input name="name" required></label><label>Edad (solo mayores de 18)<input name="age" type="number" min="18" max="99" required></label>`:""}<label>Correo<input name="email" type="email" required></label><label>Contraseña<input name="pw" type="password" minlength="6" required></label>${err?`<p class="note" role="alert" style="color:var(--acc)">${esc(err)}</p>`:""}<button class="btn" style="padding:13px">${up?"Crear cuenta":"Entrar"}</button><button type="button" class="chip" data-mode="${up?"in":"up"}">${up?"Ya tengo cuenta":"Soy nuevo: crear cuenta"}</button></form>`};
+function render(){$("#nav").hidden=!user||!!chatId;
+if(!user){$("#app").innerHTML=auth();return}
+if(!me){$("#app").innerHTML=`<p class="empty">${esc(err||"Cargando…")}</p>`;return}
+document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t==tab));
+const p=chatId&&plans.find(x=>x.id===chatId);
+$("#app").innerHTML=(p?chatView(p):tab=="feed"?feed():tab=="mine"?mine():tab=="me"?meForm():form())+(toast?`<div class="toast" role="status">${esc(toast)}</div>`:"")}
+
+// ---- Acciones ----
+const P=(t)=>db.from("participantes");
+document.addEventListener("click",async e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+if(d.t){tab=d.t;render()}
+else if(d.f){filter=d.f;render()}
+else if(d.mode){mode=d.mode;err="";render()}
+else if(d.hp)dlg(perfilHTML(plans.find(x=>x.id===d.hp).host||{nombre:"Usuario"}))
+else if(d.close)$("#dlg").close()
+else if(d.mgr)gestionar(d.mgr)
+else if(d.join)run(est[d.join]==="salio"?P().update({estado:"dentro"}).eq("plan",d.join).eq("persona",user.id):P().insert({plan:d.join,persona:user.id,estado:"dentro"}),"Te uniste al plan")
+else if(d.leave)run(P().update({estado:"salio"}).eq("plan",d.leave).eq("persona",user.id),"Saliste del plan")
+else if(d.del){if(confirm("¿Cancelar este plan?"))run(db.from("planes").delete().eq("id",d.del),"Plan cancelado")}
+else if(d.kick){const[a,u]=d.kick.split(":");$("#dlg").close();if(await run(P().update({estado:"sacada"}).eq("plan",a).eq("persona",u)))dlg(afterKick(a,u))}
+else if(d.block){$("#dlg").close();run(db.from("bloqueos").insert({quien:user.id,bloqueado:d.block}),"Persona bloqueada")}
+else if(d.rep){const[a,u]=d.rep.split(":");dlg(repForm(a,u))}
+else if(d.unblock)run(db.from("bloqueos").delete().eq("quien",user.id).eq("bloqueado",d.unblock),"Persona desbloqueada")
+else if(d.chat)abrirChat(d.chat)
+else if(d.back)cerrarChat()
+else if(d.out)await db.auth.signOut()});
+document.addEventListener("submit",async e=>{e.preventDefault();const f=e.target,g=new FormData(f),d=Object.fromEntries(g);
+if(f.id==="af"){err="";await(mode==="up"?signup(d):login(d));render()}
+else if(f.id==="mf"){const{data,error}=await db.from("perfiles").update({nombre:d.nombre,edad:+d.edad,bio:d.bio,gustos:g.getAll("gustos"),respuesta:d.respuesta}).eq("id",user.id).select().single();if(error)return say("No se guardó: "+error.message);me=data;say("Perfil guardado")}
+else if(f.id==="nf"){if(await run(db.from("planes").insert({anfitrion:user.id,pelicula:d.movie,cine:d.cine.trim(),lugar:d.lugar.trim(),sala:d.sala,fecha_hora:new Date(d.when).toISOString(),cupos_total:Math.min(8,Math.max(2,+d.total||3)),nota:d.note||""}),"Plan publicado")){tab="mine";render()}}
+else if(f.id==="cf"){const t=d.t.trim();f.reset();const{error}=await db.from("mensajes").insert({plan:chatId,autor:user.id,texto:t});if(error)say("Error: "+error.message);await cargarChat()}
+else if(f.id==="rf"){$("#dlg").close();const ok=await run(db.from("reportes").insert({quien:user.id,reportado:d.b,plan:d.pid,motivo:d.why,detalle:d.txt}),"Reporte enviado. Gracias por cuidar la comunidad.");if(ok&&d.also)run(db.from("bloqueos").insert({quien:user.id,bloqueado:d.b}))}});
+
+if(SUPABASE_KEY.startsWith("PEGA")){$("#app").innerHTML=`<p class="empty">Falta pegar tu llave pública en la línea SUPABASE_KEY del archivo.</p>`}
+else{db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);db.auth.onAuthStateChange((_ev,s)=>setTimeout(()=>onSession(s),0));loadMovies()}
+</script>
+</body>
+</html>
